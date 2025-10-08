@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 
-import 'views/home_view.dart';
+import 'core/utils/app_colors.dart';
+import 'features/splash/presentation/views/splash_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Shelf Wise',
-      home: HomeView(),
+      theme: ThemeData(scaffoldBackgroundColor: AppColors.primaryColor),
+      home: const SplashView(),
     );
   }
 }
