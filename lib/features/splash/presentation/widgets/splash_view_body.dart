@@ -27,8 +27,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   void dispose() {
-    super.dispose();
     animationController.dispose();
+    super.dispose();
   }
 
   @override
@@ -37,8 +37,14 @@ class _SplashViewBodyState extends State<SplashViewBody>
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Image.asset(Constants.logo),
-        const SizedBox(height: 8),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Container(
+            color: Colors.red,
+            child: Image.asset(Constants.logo),
+          ),
+        ),
+        const SizedBox(height: 10),
         SlidingTextAnimation(slidingTextAnimation: slidingTextAnimation),
       ],
     );
@@ -58,7 +64,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void navigateToHomeView() {
     Future.delayed(const Duration(milliseconds: 2000), () {
-      Get.to(
+      Get.off(
         () => const HomeView(),
         transition: Transition.fadeIn,
         duration: Constants.navigationDuration,

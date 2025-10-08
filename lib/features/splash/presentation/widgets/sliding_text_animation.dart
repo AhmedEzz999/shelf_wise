@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/app_theme.dart';
+import '../../../../core/utils/styles.dart';
 
 class SlidingTextAnimation extends StatelessWidget {
   const SlidingTextAnimation({required this.slidingTextAnimation, super.key});
@@ -14,10 +14,13 @@ class SlidingTextAnimation extends StatelessWidget {
       builder: (context, child) {
         return SlideTransition(
           position: slidingTextAnimation,
-          child: Text(
-            'Find your book easily',
-            textAlign: TextAlign.center,
-            style: AppTheme.darkTheme.textTheme.displayMedium,
+          child: const FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              'Find your book easily',
+              textAlign: TextAlign.center,
+              style: Styles.titleLarge,
+            ),
           ),
         );
       },
