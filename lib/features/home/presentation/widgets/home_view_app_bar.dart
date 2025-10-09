@@ -10,6 +10,7 @@ class HomeViewAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverAppBar(
       pinned: true,
+      titleSpacing: 4,
       title: FittedBox(
         fit: BoxFit.scaleDown,
         child: Image.asset(Constants.logo, width: 100),

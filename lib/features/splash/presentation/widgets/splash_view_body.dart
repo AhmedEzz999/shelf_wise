@@ -22,7 +22,9 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
     initAnimation();
-    navigateToHomeView();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      startAnimation();
+    });
   }
 
   @override
@@ -33,42 +35,41 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Container(
-            color: Colors.red,
-            child: Image.asset(Constants.logo),
-          ),
-        ),
-        const SizedBox(height: 10),
-        SlidingTextAnimation(slidingTextAnimation: slidingTextAnimation),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          FittedBox(fit: BoxFit.scaleDown, child: Image.asset(Constants.logo)),
+          const SizedBox(height: 4),
+          SlidingTextAnimation(slidingTextAnimation: slidingTextAnimation),
+        ],
+      ),
     );
   }
 
   void initAnimation() {
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 1500),
+      duration: const Duration(milliseconds: 1000),
     );
+
     slidingTextAnimation = Tween<Offset>(
-      begin: const Offset(0, 3.5),
+      begin: const Offset(0, 3),
       end: Offset.zero,
     ).animate(animationController);
-    animationController.forward();
+  }
+
+  void startAnimation() {
+    animationController.forward().then((_) => navigateToHomeView());
   }
 
   void navigateToHomeView() {
-    Future.delayed(const Duration(milliseconds: 2000), () {
-      Get.off(
-        () => const HomeView(),
-        transition: Transition.fadeIn,
-        duration: Constants.navigationDuration,
-      );
-    });
+    Get.off(
+      () => const HomeView(),
+      transition: Transition.fadeIn,
+      duration: Constants.navigationDuration,
+    );
   }
 }

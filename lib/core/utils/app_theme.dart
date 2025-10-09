@@ -17,6 +17,5 @@ abstract class AppTheme {
     ),
     scaffoldBackgroundColor: AppColors.primaryColor,
     fontFamily: Constants.appFontFamily,
-    primaryColorDark: Colors.white,
   );
 }

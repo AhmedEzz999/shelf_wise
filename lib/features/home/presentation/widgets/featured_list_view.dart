@@ -9,7 +9,7 @@ class FeaturedListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: SizedBox(
-        height: 240,
+        height: MediaQuery.sizeOf(context).height * .25,
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: 10,
