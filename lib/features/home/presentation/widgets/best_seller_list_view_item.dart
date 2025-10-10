@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/styles.dart';
+import 'book_rating.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({super.key});
@@ -16,8 +17,13 @@ class BestSellerListViewItem extends StatelessWidget {
           Expanded(
             flex: 3,
             child: Container(
-              color: Colors.blue,
-              child: Image.asset(Constants.testImage, fit: BoxFit.fill),
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(Constants.testImage),
+                  fit: BoxFit.fill,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(16)),
+              ),
             ),
           ),
           const SizedBox(width: 8),
@@ -35,7 +41,10 @@ class BestSellerListViewItem extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       'Harry Potter and the Goblet of Fire',
-                      style: Styles.titleMedium.copyWith(fontFamily: 'Roboto'),
+                      style: Styles.textStyle20.copyWith(
+                        fontFamily: Constants.gtSectraFine,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                   Flexible(
@@ -43,35 +52,19 @@ class BestSellerListViewItem extends StatelessWidget {
                       'J.K. Rowling',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: Styles.titleSmall.copyWith(
-                        fontFamily: 'Roboto',
-                        color: Colors.grey,
-                      ),
+                      style: Styles.textStyle18.copyWith(color: Colors.grey),
                     ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        '19.99€',
-                        style: Styles.titleMedium.copyWith(
-                          fontFamily: 'Roboto',
+                        '19.99 €',
+                        style: Styles.textStyle20.copyWith(
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Row(
-                        children: [
-                          IconButton(
-                            onPressed: () {},
-                            icon: const Icon(Icons.star, color: Colors.yellow),
-                          ),
-                          Text(
-                            '4.8(2390)',
-                            style: Styles.titleMedium.copyWith(
-                              fontFamily: 'Roboto',
-                            ),
-                          ),
-                        ],
-                      ),
+                      const BookRating(),
                     ],
                   ),
                 ],

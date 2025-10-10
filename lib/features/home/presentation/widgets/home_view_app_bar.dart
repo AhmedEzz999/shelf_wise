@@ -11,23 +11,17 @@ class HomeViewAppBar extends StatelessWidget {
     return SliverAppBar(
       pinned: true,
       titleSpacing: 4,
-      title: FittedBox(
-        fit: BoxFit.scaleDown,
-        child: Image.asset(Constants.logo, width: 100),
-      ),
+      title: Image.asset(Constants.logo, width: 100),
       actions: [
-        FittedBox(
-          fit: BoxFit.scaleDown,
-          child: IconButton(
-            icon: const FaIcon(
-              FontAwesomeIcons.magnifyingGlass,
-              size: 28,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-            style: IconButton.styleFrom(
-              padding: const EdgeInsets.only(right: 20),
-            ),
+        IconButton(
+          icon: const FaIcon(
+            FontAwesomeIcons.magnifyingGlass,
+            size: 28,
+            color: Colors.white,
+          ),
+          onPressed: () {},
+          style: IconButton.styleFrom(
+            padding: const EdgeInsets.only(right: 20),
           ),
         ),
       ],

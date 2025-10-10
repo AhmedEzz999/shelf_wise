@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'app_colors.dart';
-import 'constants.dart';
 
 abstract class AppTheme {
   static final ThemeData darkTheme = ThemeData(
@@ -16,6 +15,5 @@ abstract class AppTheme {
       iconTheme: IconThemeData(size: 28, color: Colors.white),
     ),
     scaffoldBackgroundColor: AppColors.primaryColor,
-    fontFamily: Constants.appFontFamily,
   );
 }

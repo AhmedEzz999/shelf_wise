@@ -55,3 +55,7 @@ flutter:
       fonts:
         - asset: assets/fonts/GT Sectra Fine Regular.ttf
           style: normal
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          style: normal

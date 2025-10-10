@@ -19,7 +19,7 @@ class SlidingTextAnimation extends StatelessWidget {
             child: Text(
               'Find your book easily',
               textAlign: TextAlign.center,
-              style: Styles.titleLarge,
+              style: Styles.textStyle30,
             ),
           ),
         );
