@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 
+import 'core/utils/app_router.dart';
 import 'core/utils/app_theme.dart';
-import 'features/splash/presentation/views/splash_view.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: 'Shelf Wise',
       theme: AppTheme.darkTheme,
-      home: const SplashView(),
+      routerConfig: AppRouter.router,
     );
   }
 }
