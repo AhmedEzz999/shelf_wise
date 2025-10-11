@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../core/utils/app_router.dart';
 import '../../../../core/utils/constants.dart';
 
 class HomeViewAppBar extends StatelessWidget {
@@ -19,7 +21,9 @@ class HomeViewAppBar extends StatelessWidget {
             size: 28,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () {
+            GoRouter.of(context).push(AppRouter.searchView);
+          },
           style: IconButton.styleFrom(
             padding: const EdgeInsets.only(right: 20),
           ),
