@@ -17,7 +17,7 @@ class HomeView extends StatelessWidget {
           slivers: [
             HomeViewAppBar(),
             SliverToBoxAdapter(child: SizedBox(height: 20)),
-            FeaturedListView(),
+            SliverToBoxAdapter(child: FeaturedListView()),
             SliverToBoxAdapter(child: SizedBox(height: 20)),
             SliverToBoxAdapter(
               child: Text(
