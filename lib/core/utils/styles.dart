@@ -9,5 +9,11 @@ abstract class Styles {
 
   static const textStyle20 = TextStyle(color: Colors.white, fontSize: 20);
 
+  static const textStyle24 = TextStyle(color: Colors.white, fontSize: 24);
+
+  static const textStyle26 = TextStyle(color: Colors.white, fontSize: 26);
+
+  static const textStyle28 = TextStyle(color: Colors.white, fontSize: 28);
+
   static const textStyle30 = TextStyle(color: Colors.white, fontSize: 30);
 }
