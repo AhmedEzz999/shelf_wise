@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/best_seller_list_view.dart';
+import '../widgets/newest_list_view.dart';
 import '../widgets/featured_list_view.dart';
 import '../widgets/home_view_app_bar.dart';
 
@@ -25,7 +25,7 @@ class HomeView extends StatelessWidget {
                 style: TextStyle(fontSize: 24, color: Colors.white),
               ),
             ),
-            BestSellerListView(),
+            NewestListView(),
           ],
         ),
       ),
