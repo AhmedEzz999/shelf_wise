@@ -40,9 +40,6 @@ linter:
     # Prefer const for immutable literals
     prefer_const_literals_to_create_immutables: true
 
-    # Avoid unnecessary use of 'dynamic'
-    avoid_annotating_with_dynamic: true
-
     # Avoid reassigning parameters
     parameter_assignments: false
 

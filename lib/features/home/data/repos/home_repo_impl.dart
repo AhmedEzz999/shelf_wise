@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 import '../../../../core/errors/failures.dart';
 import '../../../../core/utils/api_service.dart';
@@ -12,15 +13,22 @@ class HomeRepoImpl implements HomeRepo {
 
   @override
   Future<Either<Failures, List<BookModel>>> fetchRelevanceBooks() async {
-    final data = await apiService.get(
-      endpoint:
-          'books/v1/volumes?Filtering=free-ebooks&q=programming&Sorting=relevance',
-    );
-    final List<BookModel> books = [];
-    for (final book in data['items']) {
-      books.add(BookModel.fromJson(book));
+    try {
+      final data = await apiService.get(
+        endpoint:
+            'volumes?Filtering=free-ebooks&q=subject:Programming&Sorting=relevance',
+      );
+      final List<BookModel> books = [];
+      for (final book in data['items']) {
+        books.add(BookModel.fromJson(book));
+      }
+      return right(books);
+    } catch (error) {
+      if (error is DioException) {
+        return left(ServiceFailures.fromDioException(error));
+      }
+      return left(ServiceFailures(errorMessage: error.toString()));
     }
-    return right(books);
   }
 
   @override
