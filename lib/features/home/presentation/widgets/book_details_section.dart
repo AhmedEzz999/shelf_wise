@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/styles.dart';
 import '../../../../core/widgets/custom_button.dart';
-import 'book_rating.dart';
-import 'custom_book_image.dart';
 
 class BookDetailsSection extends StatelessWidget {
   const BookDetailsSection({super.key});
@@ -15,9 +13,9 @@ class BookDetailsSection extends StatelessWidget {
       children: [
         const FractionallySizedBox(
           widthFactor: 0.6,
-          child: CustomBookImage(
-            aspectRatio: Constants.bookAspectRatioInBookDetailsView,
-          ),
+          // child: CustomBookImage(
+          //   aspectRatio: Constants.bookAspectRatioInBookDetailsView,
+          // ),
         ),
         const SizedBox(height: 16),
         Text(
@@ -41,7 +39,10 @@ class BookDetailsSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 6),
-        const BookRating(),
+        // const BookRating(
+        //   rating: book.volumeInfo!.averageRating!,
+        //                   ratingCount: book.volumeInfo!.ratingsCount!,
+        // ),
         const SizedBox(height: 16),
         Row(
           children: [

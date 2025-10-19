@@ -4,10 +4,12 @@ import 'package:go_router/go_router.dart';
 import '../../../../core/utils/app_router.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/styles.dart';
+import '../../data/models/book_model/book_model.dart';
 import 'book_rating.dart';
 
-class BookListViewItem extends StatelessWidget {
-  const BookListViewItem({super.key});
+class NewestListItem extends StatelessWidget {
+  const NewestListItem({required this.book, super.key});
+  final BookModel book;
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +25,15 @@ class BookListViewItem extends StatelessWidget {
             Expanded(
               flex: 3,
               child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(Constants.testImage),
+                    image: NetworkImage(
+                      book.volumeInfo?.imageLinks?.thumbnail ??
+                          'https://m.media-amazon.com/images/M/MV5BY2RlNWMwZmUtMjM4MC00MDczLTk3NjktYTg2OTNiNThhNmNhXkEyXkFqcGc@._V1_FMjpg_UX370_.jpg',
+                    ),
                     fit: BoxFit.fill,
                   ),
-                  borderRadius: BorderRadius.all(Radius.circular(16)),
+                  borderRadius: const BorderRadius.all(Radius.circular(16)),
                 ),
               ),
             ),
@@ -43,14 +48,14 @@ class BookListViewItem extends StatelessWidget {
                     Text(
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
-                      'Harry Potter and the Goblet of Feir',
+                      book.volumeInfo!.title!,
                       style: Styles.textStyle20.copyWith(
                         fontFamily: Constants.gtSectraFine,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      'J.K. Rowling',
+                      book.volumeInfo?.authors?[0] ?? 'Ahmed Ezz',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Styles.textStyle18.copyWith(color: Colors.grey),
@@ -59,12 +64,15 @@ class BookListViewItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '19.99 €',
+                          '${book.saleInfo?.listPrice?.amount ?? 100}',
                           style: Styles.textStyle20.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const BookRating(),
+                        BookRating(
+                          rating: book.volumeInfo?.averageRating ?? 4,
+                          ratingCount: book.volumeInfo?.ratingsCount ?? 120,
+                        ),
                       ],
                     ),
                   ],

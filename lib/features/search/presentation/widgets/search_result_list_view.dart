@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../home/presentation/widgets/best_seller_list_view_item.dart';
+import '../../../home/presentation/widgets/newest_books_section.dart';
 
 class SearchResultListView extends StatelessWidget {
   const SearchResultListView({super.key});
@@ -10,7 +10,7 @@ class SearchResultListView extends StatelessWidget {
     return ListView.builder(
       physics: const BouncingScrollPhysics(),
       itemCount: 10,
-      itemBuilder: (context, index) => const BookListViewItem(),
+      itemBuilder: (context, index) => const NewestBooksSection(),
     );
   }
 }

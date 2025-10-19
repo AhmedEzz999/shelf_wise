@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'core/utils/app_router.dart';
 import 'core/utils/app_theme.dart';
+import 'core/utils/dependency_injection.dart';
 
 void main() {
+  setupDependencyInjection();
   runApp(const MyApp());
 }
 

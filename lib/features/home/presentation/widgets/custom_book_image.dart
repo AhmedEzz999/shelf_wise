@@ -1,22 +1,27 @@
 import 'package:flutter/material.dart';
 
-import '../../../../core/utils/constants.dart';
+import '../../data/models/book_model/book_model.dart';
 
 class CustomBookImage extends StatelessWidget {
-  const CustomBookImage({required this.aspectRatio, super.key});
+  const CustomBookImage({
+    required this.aspectRatio,
+    required this.bookModel,
+    super.key,
+  });
   final double aspectRatio;
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
     return AspectRatio(
       aspectRatio: aspectRatio,
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage(Constants.testImage),
+            image: NetworkImage(bookModel.volumeInfo!.imageLinks!.thumbnail!),
             fit: BoxFit.fill,
           ),
-          borderRadius: BorderRadius.all(Radius.circular(16)),
+          borderRadius: const BorderRadius.all(Radius.circular(16)),
         ),
       ),
     );

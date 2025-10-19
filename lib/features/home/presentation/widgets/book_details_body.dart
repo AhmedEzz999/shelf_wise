@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'book_details_section.dart';
-import 'recommended_books_list_view.dart';
 
 class BookDetailsBody extends StatelessWidget {
   const BookDetailsBody({super.key});
@@ -27,7 +26,7 @@ class BookDetailsBody extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 16),
-                RecommendedBooksListView(),
+                // RelevanceListView(),
               ],
             ),
           ),

@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 
-import 'best_seller_list_view_item.dart';
+import '../../data/models/book_model/book_model.dart';
+import 'newest_list_item.dart';
 
 class NewestListView extends StatelessWidget {
-  const NewestListView({super.key});
+  const NewestListView({required this.booksList, super.key});
+  final List<BookModel> booksList;
 
   @override
   Widget build(BuildContext context) {
-    return SliverList(
-      delegate: SliverChildBuilderDelegate(
-        (context, index) => const BookListViewItem(),
-        childCount: 10,
-      ),
+    return ListView.builder(
+      itemCount: booksList.length,
+      itemBuilder: (context, index) {
+        return NewestListItem(book: booksList[index]);
+      },
     );
   }
 }
