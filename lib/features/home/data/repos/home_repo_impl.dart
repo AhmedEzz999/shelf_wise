@@ -15,7 +15,7 @@ class HomeRepoImpl implements HomeRepo {
     try {
       final data = await apiService.get(
         endpoint:
-            'volumes?Filtering=free-ebooks&q=subject:Programming&Sorting=relevance',
+            'volumes?Filtering=free-ebooks&q=Flutter&Sorting=relevance',
       );
       final List<BookModel> books = [];
       for (final book in data['items']) {
@@ -35,7 +35,7 @@ class HomeRepoImpl implements HomeRepo {
     try {
       final data = await apiService.get(
         endpoint:
-            'volumes?Filtering=free-ebooks&q=subject:Animation',
+            'volumes?Filtering=free-ebooks&q=subject:English&Sorting=newest',
       );
       final List<BookModel> books = [];
       for (final book in data['items']) {

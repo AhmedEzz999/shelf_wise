@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/widgets/custom_error_widget.dart';
 import '../view_models/newest_books_cubit/newest_books_cubit.dart';
 import '../view_models/newest_books_cubit/newest_books_state.dart';
 import 'newest_list_item.dart';
@@ -32,11 +33,13 @@ class _NewestBooksSectionState extends State<NewestBooksSection> {
           );
         }
         if (state is NewestBooksFailure) {
-          return SliverToBoxAdapter(
-            child: Center(child: Text(state.errorMessage)),
+          return SliverFillRemaining(
+            child: Center(
+              child: CustomErrorWidget(errorMessage: state.errorMessage),
+            ),
           );
         } else {
-          return const SliverToBoxAdapter(
+          return const SliverFillRemaining(
             child: Center(child: CircularProgressIndicator()),
           );
         }

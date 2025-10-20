@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -24,16 +25,16 @@ class NewestListItem extends StatelessWidget {
           children: [
             Expanded(
               flex: 3,
-              child: Container(
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: NetworkImage(
+              child: ClipRRect(
+                borderRadius: BorderRadiusGeometry.circular(16),
+                child: CachedNetworkImage(
+                  imageUrl:
                       book.volumeInfo?.imageLinks?.thumbnail ??
-                          'https://m.media-amazon.com/images/M/MV5BY2RlNWMwZmUtMjM4MC00MDczLTk3NjktYTg2OTNiNThhNmNhXkEyXkFqcGc@._V1_FMjpg_UX370_.jpg',
-                    ),
-                    fit: BoxFit.fill,
-                  ),
-                  borderRadius: const BorderRadius.all(Radius.circular(16)),
+                      'https://via.placeholder.com/150',
+                  errorWidget: (context, url, error) {
+                    return const Icon(Icons.error, size: 50);
+                  },
+                  fit: BoxFit.fill,
                 ),
               ),
             ),
@@ -42,36 +43,36 @@ class NewestListItem extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 14),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                       book.volumeInfo!.title!,
-                      style: Styles.textStyle20.copyWith(
+                      style: Styles.textStyle24.copyWith(
                         fontFamily: Constants.gtSectraFine,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     Text(
-                      book.volumeInfo?.authors?[0] ?? 'Ahmed Ezz',
+                      book.volumeInfo?.authors?[0] ?? '',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: Styles.textStyle18.copyWith(color: Colors.grey),
+                      style: Styles.textStyle20.copyWith(color: Colors.grey),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '${book.saleInfo?.listPrice?.amount ?? 100}',
-                          style: Styles.textStyle20.copyWith(
+                          'Free',
+                          style: Styles.textStyle24.copyWith(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         BookRating(
-                          rating: book.volumeInfo?.averageRating ?? 4,
-                          ratingCount: book.volumeInfo?.ratingsCount ?? 120,
+                          rating: book.volumeInfo?.averageRating ?? 0.0,
+                          ratingCount: book.volumeInfo?.ratingsCount ?? 0,
                         ),
                       ],
                     ),
