@@ -16,7 +16,7 @@ class NewestListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.bookDetailsView);
+        GoRouter.of(context).push(AppRouter.bookDetailsView, extra: book);
       },
       child: Container(
         height: MediaQuery.sizeOf(context).height * .16,

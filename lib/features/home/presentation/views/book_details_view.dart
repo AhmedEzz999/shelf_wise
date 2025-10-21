@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
+import '../../data/models/book_model/book_model.dart';
 import '../widgets/book_details_body.dart';
 
 class BookDetailsView extends StatelessWidget {
-  const BookDetailsView({super.key});
+  const BookDetailsView({required this.bookModel, super.key});
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class BookDetailsView extends StatelessWidget {
         appBar: AppBar(
           leading: IconButton(
             padding: const EdgeInsets.only(left: 24),
-            icon: const Icon(Icons.close),
+            icon: const Icon(Icons.arrow_back),
             onPressed: () {
               Navigator.pop(context);
             },
@@ -25,7 +27,7 @@ class BookDetailsView extends StatelessWidget {
             ),
           ],
         ),
-        body: const BookDetailsBody(),
+        body: BookDetailsBody(bookModel: bookModel),
       ),
     );
   }

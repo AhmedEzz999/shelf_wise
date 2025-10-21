@@ -6,4 +6,7 @@ import '../models/book_model/book_model.dart';
 abstract interface class HomeRepo {
   Future<Either<Failures, List<BookModel>>> fetchNewestBooks();
   Future<Either<Failures, List<BookModel>>> fetchRelevanceBooks();
+  Future<Either<Failures, List<BookModel>>> fetchSimilarBooks({
+    required String category,
+  });
 }

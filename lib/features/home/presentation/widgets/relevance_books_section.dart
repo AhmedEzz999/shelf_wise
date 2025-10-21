@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/utils/constants.dart';
 import '../../../../core/widgets/custom_error_widget.dart';
+import '../../../../core/widgets/horizontal_list_view.dart';
 import '../view_models/relevance_books_cubit/relevance_books_cubit.dart';
-import 'relevance_list_view.dart';
 
 class RelevanceBooksSection extends StatefulWidget {
   const RelevanceBooksSection({super.key});
@@ -26,9 +27,13 @@ class _RelevanceBooksSectionState extends State<RelevanceBooksSection> {
       child: BlocBuilder<RelevanceBooksCubit, RelevanceBooksState>(
         builder: (context, state) {
           if (state is RelevanceBooksSuccess) {
-            return RelevanceListView(booksList: state.books, padding: 12);
+            return HorizontalListView(
+              booksList: state.books,
+              padding: 12,
+              aspectRatio: Constants.bookAspectRatioInRelevanceList,
+            );
           }
-          if (state is RelevanceBooksFailure) {
+          else if (state is RelevanceBooksFailure) {
             return Center(
               child: CustomErrorWidget(errorMessage: state.errorMessage),
             );

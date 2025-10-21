@@ -3,26 +3,31 @@ import 'package:flutter/material.dart';
 import '../../../../core/utils/constants.dart';
 import '../../../../core/utils/styles.dart';
 import '../../../../core/widgets/custom_button.dart';
+import '../../data/models/book_model/book_model.dart';
+import 'book_rating.dart';
+import 'custom_book_image.dart';
 
 class BookDetailsSection extends StatelessWidget {
-  const BookDetailsSection({super.key});
+  const BookDetailsSection({required this.bookModel, super.key});
+  final BookModel bookModel;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const FractionallySizedBox(
+        FractionallySizedBox(
           widthFactor: 0.6,
-          // child: CustomBookImage(
-          //   aspectRatio: Constants.bookAspectRatioInBookDetailsView,
-          // ),
+          child: CustomBookImage(
+            bookModel: bookModel,
+            aspectRatio: Constants.bookAspectRatioInBookDetailsView,
+          ),
         ),
         const SizedBox(height: 16),
         Text(
           maxLines: 2,
           overflow: TextOverflow.ellipsis,
           textAlign: TextAlign.center,
-          'Harry Potter and the Goblet of Fire',
+          '${bookModel.volumeInfo!.title!}.',
           style: Styles.textStyle24.copyWith(
             fontFamily: Constants.gtSectraFine,
             fontWeight: FontWeight.bold,
@@ -30,7 +35,7 @@ class BookDetailsSection extends StatelessWidget {
         ),
         const SizedBox(height: 6),
         Text(
-          'J.K. Rowling',
+          bookModel.volumeInfo?.authors?[0] ?? '',
           maxLines: 1,
           overflow: TextOverflow.ellipsis,
           style: Styles.textStyle20.copyWith(
@@ -39,10 +44,10 @@ class BookDetailsSection extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 6),
-        // const BookRating(
-        //   rating: book.volumeInfo!.averageRating!,
-        //                   ratingCount: book.volumeInfo!.ratingsCount!,
-        // ),
+        BookRating(
+          rating: bookModel.volumeInfo?.averageRating ?? 0.0,
+          ratingCount: bookModel.volumeInfo?.ratingsCount ?? 0,
+        ),
         const SizedBox(height: 16),
         Row(
           children: [
@@ -50,7 +55,7 @@ class BookDetailsSection extends StatelessWidget {
               child: CustomButton(
                 onPressed: () {},
                 backgroundColor: Colors.white,
-                text: '19.99 €',
+                text: 'Free',
                 textSize: 24,
                 textColor: Colors.black,
                 borderRadius: const BorderRadius.only(
